@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Dialog } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import { Dialog } from "./components/ui/dialog";
+import { Button } from "./components/ui/button";
 import { ReferralForm } from "./components/referral-form";
 import { Benefits } from "./components/benefits";
 import { HowItWorks } from "./components/how-it-works";
-import { Faq } from "./components/faq";
+import { Faq } from "@/components/faq";
 import { BanknoteIcon } from "lucide-react";
 
 export default function App() {
