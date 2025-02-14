@@ -11,7 +11,10 @@ export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div
+      className="min-h-screen min-w-screen
+     bg-gradient-to-b from-blue-50 to-white"
+    >
       <header className="border-b bg-white">
         <nav className="container mx-auto flex h-16 items-center justify-between px-4">
           <div className="text-2xl font-bold text-blue-600">Accredian</div>
@@ -41,7 +44,11 @@ export default function App() {
                   </span>
                 </p>
                 <div className="mt-10">
-                  <Button size="lg" onClick={() => setIsModalOpen(true)}>
+                  <Button
+                    className="bg-blue-600 text-white hover:bg-blue-700 rounded-full"
+                    size="lg"
+                    onClick={() => setIsModalOpen(true)}
+                  >
                     Refer Now
                   </Button>
                 </div>
@@ -84,7 +91,7 @@ export default function App() {
             <Button
               size="lg"
               variant="secondary"
-              className="mt-8"
+              className="mt-8 bg-white text-blue-600 hover:bg-blue-100 hover:text-blue-600 rounded-full"
               onClick={() => setIsModalOpen(true)}
             >
               Start Referring Now
