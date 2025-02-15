@@ -55,11 +55,20 @@ export function ReferralForm({ onClose }: ReferralFormProps) {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+
+    // close the dialog after submission
     onClose();
+
+    // clear the form after submission
+    form.reset();
   }
 
   return (
-    <DialogContent className="sm:max-w-[500px]">
+    // making the dialog scrollable and adding some space between the upper and lower screen and the dialog
+    <DialogContent
+      className="sm:max-w-[500px] sm:w-full bg-white rounded-lg
+      shadow-lg p-6 space-y-6 overflow-y-auto max-h-[calc(100vh-4rem)]"
+    >
       <DialogHeader>
         <DialogTitle>Refer a Friend</DialogTitle>
         <DialogDescription>
@@ -79,7 +88,7 @@ export function ReferralForm({ onClose }: ReferralFormProps) {
                   <FormControl>
                     <Input placeholder="John Doe" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-red-500" />
                 </FormItem>
               )}
             />
@@ -92,7 +101,7 @@ export function ReferralForm({ onClose }: ReferralFormProps) {
                   <FormControl>
                     <Input placeholder="john@example.com" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-red-500" />
                 </FormItem>
               )}
             />
@@ -105,7 +114,7 @@ export function ReferralForm({ onClose }: ReferralFormProps) {
                   <FormControl>
                     <Input placeholder="+1234567890" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-red-500" />
                 </FormItem>
               )}
             />
@@ -124,7 +133,7 @@ export function ReferralForm({ onClose }: ReferralFormProps) {
                   <FormControl>
                     <Input placeholder="Jane Doe" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-red-500" />
                 </FormItem>
               )}
             />
@@ -137,7 +146,7 @@ export function ReferralForm({ onClose }: ReferralFormProps) {
                   <FormControl>
                     <Input placeholder="jane@example.com" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-red-500" />
                 </FormItem>
               )}
             />
@@ -150,7 +159,7 @@ export function ReferralForm({ onClose }: ReferralFormProps) {
                   <FormControl>
                     <Input placeholder="+1234567890" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-red-500" />
                 </FormItem>
               )}
             />
@@ -171,7 +180,7 @@ export function ReferralForm({ onClose }: ReferralFormProps) {
                       <SelectValue placeholder="Select a course" />
                     </SelectTrigger>
                   </FormControl>
-                  <SelectContent>
+                  <SelectContent className="bg-white">
                     <SelectItem value="product-management">
                       Product Management
                     </SelectItem>
@@ -184,16 +193,27 @@ export function ReferralForm({ onClose }: ReferralFormProps) {
                     </SelectItem>
                   </SelectContent>
                 </Select>
-                <FormMessage />
+                <FormMessage className="text-red-500" />
               </FormItem>
             )}
           />
 
           <div className="flex justify-end gap-4">
-            <Button type="button" variant="outline" onClick={onClose}>
+            <Button
+              className="text-blue-600"
+              type="button"
+              variant="outline"
+              onClick={onClose}
+            >
               Cancel
             </Button>
-            <Button type="submit">Submit Referral</Button>
+            <Button
+              className="bg-blue-600 text-white hover:bg-blue-700 
+            "
+              type="submit"
+            >
+              Submit Referral
+            </Button>
           </div>
         </form>
       </Form>
