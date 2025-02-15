@@ -6,6 +6,7 @@ import { Benefits } from "./components/benefits";
 import { HowItWorks } from "./components/how-it-works";
 import { Faq } from "./components/faq";
 import { BanknoteIcon, MenuIcon, XIcon } from "lucide-react";
+import { Toaster } from "@/components/ui/toaster";
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -134,6 +135,8 @@ export default function App() {
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
         <ReferralForm onClose={() => setIsModalOpen(false)} />
       </Dialog>
+
+      <Toaster />
     </div>
   );
 }

@@ -24,6 +24,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { referralApi } from "@/lib/api";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   referrerName: z.string().min(2, "Name must be at least 2 characters"),
@@ -53,8 +55,31 @@ export function ReferralForm({ onClose }: ReferralFormProps) {
     },
   });
 
+  const { toast } = useToast();
+
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    // send the referral data to the server
+    referralApi
+      .createReferral(values)
+      .then((response) => {
+        if (response.status === "success") {
+          toast({
+            title: response.message,
+            variant: "default",
+          });
+        } else {
+          toast({
+            title: response.message,
+            variant: "destructive",
+          });
+        }
+      })
+      .catch(() => {
+        toast({
+          title: "An error occurred while submitting the referral",
+          variant: "destructive",
+        });
+      });
 
     // close the dialog after submission
     onClose();
